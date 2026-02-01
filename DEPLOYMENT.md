@@ -1,33 +1,60 @@
-# Deployment Guide - InsightOps
+# Deployment Guide - InsightOps 🚀
 
-This guide outlines the process for deploying InsightOps to a live environment. Since this is a static web application, you have several easy and free options.
+InsightOps is a pure static web application. This means you can host it for free on almost any modern web platform without needing a server.
 
-## Option 1: Vercel (Recommended)
-Vercel provides a seamless experience for static sites.
+## 🏆 Recommended: Vercel (Fastest & Easiest)
 
-1.  **Install Vercel CLI**: `npm i -g vercel`
-2.  **Deploy**: Run `vercel` from the project root.
-3.  **Configure**: Follow the prompts to link your project.
-4.  **Environment Variables**: In the Vercel dashboard, add `GEMINI_API_KEY` to your project settings if you plan to move the configuration out of `env.js`.
+Vercel is the gold standard for static site hosting. It provides automatic SSL, a global CDN, and a very simple CLI.
 
-## Option 2: Netlify
-Netlify is another excellent choice with a simple drag-and-drop interface.
+### 1. Install Vercel CLI
+If you have Node.js installed, run:
+```bash
+npm i -g vercel
+```
 
-1.  Go to [Netlify](https://www.netlify.com/).
-2.  **Drag & Drop**: Zip the project folder (excluding `.git` and `node_modules`) and drop it into the Netlify deploy area.
-3.  **Git Integration**: Alternatively, connect your GitHub/GitLab repository for automatic deploys on every push.
+### 2. Configure Vercel Dashboard (Browser)
+If you are deploying via the Vercel website (as shown in your screenshot):
 
-## Option 3: GitHub Pages
-If your code is hosted on GitHub, you can use GitHub Pages for free.
+1.  **Framework Preset**: Select **Other**.
+2.  **Build Command**: Enter `npm run build`. This runs the `inject-env.js` script to set your API key.
+3.  **Output Directory**: Keep it as `./` (or blank).
+4.  **Environment Variables**:
+    - **Key**: `GEMINI_API_KEY`
+    - **Value**: Your Google Gemini API Key.
+5.  **Click Deploy**.
 
-1.  Push your code to a GitHub repository.
-2.  Go to **Settings** > **Pages**.
-3.  Select the branch to deploy from (usually `main`).
-4.  Your site will be live at `https://<username>.github.io/<repo-name>/`.
+### 3. Alternative: Vercel CLI
+If you prefer the terminal:
+```bash
+vercel -e GEMINI_API_KEY=your_key_here
+```
 
 ---
 
-### Important Considerations
+## ☁️ Option 2: GitHub Pages (Integrated)
 
-- **API Key Security**: Storing your `GEMINI_API_KEY` in `env.js` is fine for local development and demos. However, for a production app, consider using a backend proxy or serverless functions to hide your key, as any client-side key can be seen by users inspect-element.
-- **Base URL**: If deploying to a subfolder (like GitHub Pages), ensure any internal links in `index.html` or `app.js` are relative.
+If your code is on GitHub, this is a great "set it and forget it" option.
+
+1.  Push your code to your GitHub repository.
+2.  Go to **Settings** > **Pages**.
+3.  Under **Build and deployment**, set Source to **Deploy from a branch**.
+4.  Select `main` (or your primary branch) and the `/ (root)` folder.
+5.  Click **Save**. Your site will be live in a few minutes at `https://<username>.github.io/<repo-name>/`.
+
+---
+
+## 🛡️ Important: API Key Security
+
+> [!WARNING]
+> Since this is a client-side application, your `GEMINI_API_KEY` in `env.js` is technically visible to anyone who uses "Inspect Element" on your site.
+> 
+> **For Demos**: This is usually acceptable as long as you monitor your usage.
+> **For Production**: You should ideally wrap the AI calls in a small backend proxy (like a Vercel Serverless Function) to keep the key hidden.
+
+---
+
+## 🛠️ Post-Deployment Checklist
+
+- [ ] **Check Links**: Ensure all assets (CSS, JS, Images) load correctly.
+- [ ] **Test AI**: Run a diagnostic scan to confirm the Gemini API connection.
+- [ ] **Responsive Test**: Check the dashboard on different screen sizes.

@@ -1,0 +1,10 @@
+{
+  "name": "insight-ops",
+  "version": "1.0.0",
+  "description": "AI-powered SRE dashboard",
+  "scripts": {
+    "build": "node inject-env.js"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
