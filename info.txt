@@ -1,1 +1,4 @@
-2025-12-20 pixel commit 5
+InsightOps is an AI-powered SRE (Site Reliability Engineering) command center designed for the modern distributed era. It transforms raw, chaotic system logs into clear, actionable intelligence. By combining a "Time Machine" replay engine with predictive AI, InsightOps doesn't just help you fix incidents—it helps you see the future of your infrastructure.
+
+InsightOps is an AI-powered SRE (Site Reliability Engineering) command center designed for the modern distributed era. It transforms raw, chaotic system logs into clear, actionable intelligence. By combining a "Time Machine" replay engine with predictive AI, InsightOps doesn't just help you fix incidents—it helps you see the future of your infrastructure.
+
